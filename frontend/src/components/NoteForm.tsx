@@ -26,14 +26,14 @@ export default function NoteForm({ editingNote, onSave, onCancelEdit }: NoteForm
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded shadow-md w-full max-w-md flex flex-col gap-4"
+        className="bg-blue-900 p-6 rounded shadow-md w-full max-w-md flex flex-col gap-4"
       >
-        <h2 className="text-xl font-bold">{editingNote ? "Editar Nota" : "Nueva Nota"}</h2>
-        <Input placeholder="Título" value={title} onChange={(e) => setTitle(e.target.value)} />
-        <Textarea placeholder="Contenido" value={content} onChange={(e) => setContent(e.target.value)} />
+        <h2 className="text-xl font-bold">{editingNote ? "Edit Note" : "New Note"}</h2>
+        <Input placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
+        <Textarea placeholder="Content" value={content} onChange={(e) => setContent(e.target.value)} />
         <div className="flex justify-end gap-2">
-          <Button type="button" variant="outline" onClick={onCancelEdit}>Cancelar</Button>
-          <Button type="submit">Guardar</Button>
+          <Button type="button" variant="outline" onClick={onCancelEdit}>Cancel</Button>
+          <Button type="submit">Save</Button>
         </div>
       </form>
     </div>

@@ -33,38 +33,42 @@ export default function NoteItem({
   };
 
   return (
-    <Card className="w-full sm:w-80">
+    <Card className="glass-panel card-elev w-full sm:w-80 text-slate-100">
       <CardContent>
-        <div className="flex justify-between items-center mb-2">
+        <div className="flex justify-between items-start mb-3">
           <h3 className="text-lg font-semibold">{note.title}</h3>
           <div className="flex gap-1">
-            <Button size="sm" onClick={() => handleEdit(note)}>
-              Editar
+            <Button
+              size="sm"
+              variant="ghost"
+              className="btn-accent"
+              onClick={() => handleEdit(note)}
+            >
+              Edit
             </Button>
             <Button
               size="sm"
               variant="destructive"
+              className="btn-accent"
               onClick={() => handleDelete(note.id)}
             >
-              Eliminar
+              Delete
             </Button>
           </div>
         </div>
-        <p className="text-gray-700 mb-2">{note.content}</p>
+
+        <p className="text-slate-300 mb-3">{note.content}</p>
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-1 mb-2">
+        <div className="flex flex-wrap gap-1 mb-3">
           {note.tags.map((tag) => (
-            <div
-              key={tag}
-              className="flex items-center bg-gray-200 px-2 py-0.5 rounded-full text-xs"
-            >
+            <div key={tag} className="tag-pill flex items-center gap-1">
               <span>{tag}</span>
               <Button
                 size="icon"
                 variant="ghost"
                 onClick={() => removeTag(tag)}
-                className="ml-1 text-red-500"
+                className="ml-1 text-red-400 hover:text-red-300"
               >
                 ×
               </Button>
@@ -72,21 +76,21 @@ export default function NoteItem({
           ))}
         </div>
 
-        {/* Agregar tag */}
+        {/* Add tag form */}
         <form className="flex gap-2" onSubmit={addTag}>
           <input
             value={tagInput}
             onChange={(e) => setTagInput(e.target.value)}
-            placeholder="Nuevo tag"
-            className="border px-2 py-1 rounded flex-1"
+            placeholder="New tag"
+            className="glass-panel border border-slate-600/40 px-2 py-1 rounded flex-1 text-slate-100 placeholder-slate-400 focus:outline-none"
           />
-          <Button type="submit" size="sm">
-            Agregar
+          <Button type="submit" size="sm" className="btn-accent">
+            Add
           </Button>
         </form>
       </CardContent>
 
-      <CardFooter>
+      <CardFooter className="mt-2">
         <Button
           size="sm"
           variant="outline"
@@ -95,7 +99,7 @@ export default function NoteItem({
             fetchNotes();
           }}
         >
-          {note.archived ? "Desarchivar" : "Archivar"}
+          {note.archived ? "Unarchive" : "Archive"}
         </Button>
       </CardFooter>
     </Card>

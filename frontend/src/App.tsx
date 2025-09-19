@@ -50,53 +50,56 @@ export default function App() {
   });
 
   return (
-    <div className="min-h-screen p-4 bg-gray-50">
-      <header className="flex justify-between items-center mb-4">
-        <h1 className="text-3xl font-bold">📝 Notes App</h1>
-        <Button
-          onClick={() =>
-            setEditingNote({
-              id: 0,
-              title: "",
-              content: "",
-              archived: false,
-              tags: [],
-            })
-          }
-        >
-          Nueva Nota
-        </Button>
-      </header>
+    <div className="app-bg">
+      <div className="min-h-screen max-w-6xl mx-auto p-6">
+        <header className="flex justify-between items-center mb-8">
+          <h1 className="text-3xl font-bold">📝 Notes App</h1>
+          <Button
+            className="btn-accent"
+            onClick={() =>
+              setEditingNote({
+                id: 0,
+                title: "",
+                content: "",
+                archived: false,
+                tags: [],
+              })
+            }
+          >
+            New Note
+          </Button>
+        </header>
 
-      <FilterBar
-        filter={filter}
-        setFilter={setFilter}
-        allTags={allTags}
-        filterTag={filterTag}
-        setFilterTag={setFilterTag}
-        showArchived={showArchived}
-        setShowArchived={setShowArchived}
-      />
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {filteredNotes.map((note) => (
-          <NoteItem
-            key={note.id}
-            note={note}
-            fetchNotes={fetchNotes}
-            handleEdit={setEditingNote}
-            handleDelete={deleteNote}
-          />
-        ))}
-      </div>
-
-      {editingNote && (
-        <NoteForm
-          editingNote={editingNote}
-          onSave={saveNote}
-          onCancelEdit={() => setEditingNote(null)}
+        <FilterBar
+          filter={filter}
+          setFilter={setFilter}
+          allTags={allTags}
+          filterTag={filterTag}
+          setFilterTag={setFilterTag}
+          showArchived={showArchived}
+          setShowArchived={setShowArchived}
         />
-      )}
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+          {filteredNotes.map((note) => (
+            <NoteItem
+              key={note.id}
+              note={note}
+              fetchNotes={fetchNotes}
+              handleEdit={setEditingNote}
+              handleDelete={deleteNote}
+            />
+          ))}
+        </div>
+
+        {editingNote && (
+          <NoteForm
+            editingNote={editingNote}
+            onSave={saveNote}
+            onCancelEdit={() => setEditingNote(null)}
+          />
+        )}
+      </div>
     </div>
   );
 }

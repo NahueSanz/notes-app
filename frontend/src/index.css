@@ -3,3 +3,72 @@
 html {
   scroll-behavior: smooth;
 }
+
+:root {
+  --bg-1: #0f172a; /* deep navy */
+  --bg-2: #071133; /* darker accent */
+  --accent: #7c3aed; /* purple-ish accent */
+  --muted: rgba(255, 255, 255, 0.06);
+}
+
+/* Wrapper que contiene todo (aplicar en App.tsx) */
+.app-bg {
+  min-height: 100vh;
+  background-color: var(--bg-1);
+  /* capamos un gradiente radial suave */
+  background-image: radial-gradient(
+      600px 400px at 10% 20%,
+      rgba(124, 58, 237, 0.12),
+      transparent 12%
+    ),
+    radial-gradient(
+      500px 300px at 90% 80%,
+      rgba(0, 229, 255, 0.06),
+      transparent 14%
+    ),
+    linear-gradient(180deg, rgba(10, 14, 30, 0.92), rgba(6, 9, 20, 0.96));
+  background-blend-mode: screen, screen, normal;
+  color: #e6eef8;
+  /* subtle noise overlay using CSS filter fallback */
+}
+
+/* Optional subtle "glass" panel styling for cards/forms */
+.glass-panel {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.015)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* Stronger elevation for active cards */
+.card-elev {
+  box-shadow: 0 6px 20px rgba(2, 6, 23, 0.6);
+  border-radius: 12px;
+}
+
+/* Headline style */
+.app-title {
+  letter-spacing: -0.02em;
+  color: #f8fafc;
+}
+
+/* Buttons: accent filled / outline */
+.btn-accent {
+  background: linear-gradient(90deg, var(--accent), #06b6d4);
+  color: white;
+  border-radius: 10px;
+  padding: 0.45rem 0.9rem;
+}
+
+/* small tags */
+.tag-pill {
+  background: rgba(255, 255, 255, 0.06);
+  color: #e6eef8;
+  padding: 0.18rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+}

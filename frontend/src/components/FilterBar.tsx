@@ -14,7 +14,7 @@ export default function FilterBar({
     <div className="mb-4 flex flex-col gap-2">
       <input
         type="text"
-        placeholder="Filtrar por título o tag"
+        placeholder="Filter by title or tag"
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
         className="border px-2 py-1 rounded w-full max-w-md"
@@ -39,14 +39,14 @@ export default function FilterBar({
           variant={!showArchived ? "default" : "outline"}
           onClick={() => setShowArchived(false)}
         >
-          Activas
+          Active
         </Button>
         <Button
           size="sm"
           variant={showArchived ? "default" : "outline"}
           onClick={() => setShowArchived(true)}
         >
-          Archivadas
+          Archived
         </Button>
       </div>
     </div>
